@@ -9,6 +9,38 @@
 
 <div class="col-sm-8 offset-2">
 
+<legend style="margin-left: 60px; color:purple; margin-top:20px;">User's Login</legend>
+<hr>
+<form>
+
+<div class="col-sm-6">
+<div class ="form-group">
+<labe>Email</label>
+ <input type="email" name="email" class="form-control">
+</div>
+</div>
+
+<div class="col-sm-6">
+<div class ="form-group">
+<labe>Password</label>
+ <input type="password" name="password" class="form-control">
+</div>
+</div>
+
+
+<div class="col-sm-6">
+ <div class="form-group"> 
+<a href="#"><h5 style="font-family:cursive; ">Forget Password</h5></a>
+<p>Or</p>
+<a href="register.php"><span> <p style="margin-left:25px; font-family:cursive;"> Create a Account</p></span></a>
+</div>
+<div class="col-sm-6">
+<button class="btn btn-primary"  style="margin-left: 9px;"> Login</button>
+</div>
+
+
+
+</form>
 </div>
 </div>
 </div>

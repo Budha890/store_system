@@ -9,6 +9,56 @@
 
 <div class="col-sm-8 offset-2">
 
+<legend style="margin-left: 60px; color:purple; margin-top:20px;">Signup Form </legend>
+<hr>
+<form>
+
+<div class="col-sm-6">
+<div class ="form-group">
+<labe>Name</label>
+ <input type="text" name="name" class="form-control">
+</div>
+</div>
+
+<div class="col-sm-6">
+<div class ="form-group">
+<labe>Email</label>
+ <input type="email" name="email" class="form-control">
+</div>
+</div>
+
+<div class="col-sm-6">
+<div class ="form-group">
+<labe>Password</label>
+ <input type="password" name="password" class="form-control">
+</div>
+</div>
+<div class="col-sm-6">
+<div class ="form-group">
+<labe>Mobile No</label>
+ <input type="number" name="mobile_no" class="form-control">
+</div>
+</div>
+<div class="col-sm-6">
+<div class ="form-group">
+<labe>Address</label>
+ <input type="text" name="address" class="form-control">
+</div>
+</div>
+
+<div class="col-sm-6">
+ <div class="form-group"> 
+<a href="#"><h5 style="font-family:cursive; ">Forget Password</h5></a>
+<p>Or</p>
+<a href="login.php"><span> <p style="margin-left:25px; font-family:cursive;"> Already User</p></span></a>
+</div>
+<div class="col-sm-6">
+<button type="button" class="btn btn-outline-primary" style="margin-left:25px; font-family:cursive;">Register</button>
+</div>
+
+
+
+</form>
 </div>
 </div>
 </div>
