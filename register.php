@@ -10,13 +10,15 @@
 <div class="col-sm-8 offset-2">
 
 <legend style="margin-left: 60px; color:purple; margin-top:20px;">Signup Form </legend>
+
+<?php if(isset($_GET['alert'])){ echo '<h5?>'.$_GET['alert'].'</h5>';} ?>
 <hr>
-<form>
+<form  method = "post" action="action.php?form=register">
 
 <div class="col-sm-6">
 <div class ="form-group">
-<labe>Name</label>
- <input type="text" name="name" class="form-control">
+<labe>FullName</label>
+ <input type="text" name="username" placeholder= " eg: Joe  Bulls" class="form-control">
 </div>
 </div>
 
@@ -36,7 +38,7 @@
 <div class="col-sm-6">
 <div class ="form-group">
 <labe>Mobile No</label>
- <input type="number" name="mobile_no" class="form-control">
+ <input type="number" name="mobileno" class="form-control">
 </div>
 </div>
 <div class="col-sm-6">
@@ -53,7 +55,7 @@
 <a href="login.php"><span> <p style="margin-left:25px; font-family:cursive;"> Already User</p></span></a>
 </div>
 <div class="col-sm-6">
-<button type="button" class="btn btn-outline-primary" style="margin-left:25px; font-family:cursive;">Register</button>
+<input type="submit" name="btn_register" value="register" class="btn btn-outline-primary" style="margin-left:25px; font-family:cursive;">
 </div>
 
 

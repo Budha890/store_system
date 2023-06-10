@@ -8,11 +8,12 @@
     
 <div class ="col-sm-12">
 
-<div class="col-sm-8 offset-2">
+<div class="col-sm-7 offset-3">
 
 <legend style="margin-left: 60px; color:purple; margin-top:20px;">User's Login</legend>
+<span><?php if(isset($_GET['alert'])){ echo '<h5?>'.$_GET['alert'].'</h5>';} ?></span>
 <hr>
-<form>
+<form method="post" action="action.php?form=login">
 
 <div class="col-sm-6">
 <div class ="form-group">
@@ -28,16 +29,16 @@
 </div>
 </div>
 
-
-<div class="col-sm-6">
+<div class="col-sm-4 offset-2">
+<input type="submit" class="btn btn-outline-primary " style="text-align: center;font-family: cursive;" value="login" name="btn_login"> 
+</div>
+<div class="col-sm-6 " style="margin-left:32px;">
  <div class="form-group"> 
-<a href="#"><h5 style="font-family:cursive; ">Forget Password</h5></a>
+<a href="#"><p style="font-family:cursive;  margin-top:20px;">Forget Password</p></a>
 <p>Or</p>
 <a href="register.php"><span> <p style="margin-left:25px; font-family:cursive;"> Create a Account</p></span></a>
 </div>
-<div class="col-sm-6">
-<button class="btn btn-primary"  style="margin-left: 9px;"> Login</button>
-</div>
+
 
 
 
