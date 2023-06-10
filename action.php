@@ -1,5 +1,8 @@
 <?php 
+session_start();
 require_once("config.php");
+require_once("module.php");
+
 
 // Register Form  behind the scene here :
         if(($_GET['form']=='register') AND ($_POST['btn_register']=='register')){
@@ -46,12 +49,15 @@ require_once("config.php");
                 }
                 if($sql->num_rows !=0){
 
-                    $row = $sql->fetch_assoc();
+                 
                     $queryp = "select *from userlog where email = '$email' AND password ='$password'"; 
                     $runqueryp = $conn->query($queryp);
 
+                  
                     if($runqueryp->num_rows !=0){
 
+                        $row = $runqueryp->fetch_assoc();
+                        logintostore($row['userid'],$row['username'],$row['usertype']);
                         $alert = "welcome ";
                         header('location: index.php');
                         $conn->close();
@@ -59,11 +65,13 @@ require_once("config.php");
                     }else{
 
                         $alert= "invalid login data";
-                        header("location: login.php");
+                        header("location: login.php?alert=".$alert);
                     }
                 }
 
-            }else{}
+            }
+
+
 
 
 

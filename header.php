@@ -1,3 +1,9 @@
+
+<?php 
+     require_once('module.php');
+
+?>
+
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -47,13 +53,28 @@
       <!-- <p class="btn btn-outline-success my-2 my-sm-0" type="submit">username</p> -->
 
       <div class="dropdown">
-  <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    userName
-  </button>
+      <?php
+if (isset($_SESSION['userid'])) {
+?>
+    <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <?php echo $_SESSION['username']; ?>
+    </button>
+<?php
+} else {
+?>
+   <a href="login.php"> <button class="btn btn-outline-warning " type="button" id="" aria-expanded="false">
+        login
+    </button></a>
+<?php
+}
+?>
+
+  
+
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="font-family:cursive;">
     <a class="dropdown-item" href="#">profile</a>
     <a class="dropdown-item" href="#">setting</a>
-    <a class="dropdown-item" href="#" style="color:#e3626eb0">logout</a>
+    <a class="dropdown-item" href="session.php" style="color:#e3626eb0">logout</a>
   </div>
 </div>
     </form>
