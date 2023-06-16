@@ -13,8 +13,10 @@ require_once("module.php");
             $mobileno = $_POST['mobileno'];
             $address = $_POST['address'];
 
+            // issue is here 
              $query = "select *from userlog where email = '$email'";
                 $exec = mysqli_query($conn,$query);
+
 
             if($exec->num_rows !=0){  
                
