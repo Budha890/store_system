@@ -1,5 +1,4 @@
 <?php 
-session_start();
 require_once("config.php");
 require_once("module.php");
 
@@ -13,12 +12,9 @@ require_once("module.php");
             $mobileno = $_POST['mobileno'];
             $address = $_POST['address'];
 
-        
              $query = "select *from userlog where email = '$email'";
                 $exec = mysqli_query($conn,$query);
-
-
-            if($exec->num_rows !=0){  
+            if($exec->num_rows !=0){
                
                 $alert = "Email already exits";
                 header('location:register.php?alert='.$alert);
@@ -60,6 +56,8 @@ require_once("module.php");
                     if($runqueryp->num_rows !=0){
 
                         $row = $runqueryp->fetch_assoc();
+
+                      
                         logintostore($row['userid'],$row['username'],$row['usertype']);
                         $alert = "welcome ";
                         header('location: index.php');
@@ -75,7 +73,42 @@ require_once("module.php");
             }
 
 
+            if(($_GET['form']=='adminForm') AND ($_POST['btn_login']=='login')){
+                $email = $_POST['email'];
+                $password = md5($_POST['password']);
+            
+                
+                $query = "select * from userlog where email = '$email'";
+                $sql =   mysqli_query($conn,$query);
+               
+                if($sql->num_rows ==0){
+                    $alert = "user's not found";
+                    header("location:admin.php?alert=".$alert);
+                    die();
+                }
 
-    header("location: index.php");
+                if($sql->num_rows !=0){
+
+                 
+                    $queryp = "select *from userlog where email = '$email' AND password ='$password' AND usertype = 'manager'"; 
+                    $runqueryp = $conn->query($queryp);
+
+                  
+                    if($runqueryp->num_rows !=0){
+
+                        $row = $runqueryp->fetch_assoc();
+                        logintostore($row['userid'],$row['username'],$row['usertype']);
+                        $alert = "welcome ";
+                        header('location: view.php');
+                        $conn->close();
+                        die();
+                    }else{
+
+                        $alert= "invalid login data";
+                        header("location: admin.php?alert=".$alert);
+                    }
+                }
+            }
+
 
 ?>

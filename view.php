@@ -1,10 +1,4 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Store Management</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
+   <style>
         body {
             margin: 0;
         }
@@ -50,11 +44,8 @@
             color: #007bff;
         }
     </style>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Store Management</a>
-    </nav>
+
+  <?php require_once 'header.php' ?>
 
     <div class="container-fluid">
 
@@ -76,7 +67,7 @@
                     <div class="content" id="dashboard">
                     <?php 
                    
-                   for($i=0; $i<50; $i++){
+                   for($i=0; $i<5; $i++){
 
                     echo "<li> ".$i."</li> <br/>";
                    }
@@ -93,7 +84,10 @@
     
     </div>
 
-    <script>
+
+    </body>
+</html>
+<script>
         function showDashboard() {
             document.getElementById("dashboard").classList.remove("d-none");
             document.getElementById("products").classList.add("d-none");
@@ -109,6 +103,6 @@
         // Add similar functions for other sections
 
     </script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>  
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
