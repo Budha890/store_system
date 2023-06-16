@@ -15,7 +15,8 @@ require_once("module.php");
 
              $query = "select *from userlog where email = '$email'";
                 $exec = mysqli_query($conn,$query);
-            if($exec->num_rows !=0){
+
+            if($exec->num_rows !=0){  
                
                 $alert = "Email already exits";
                 header('location:register.php?alert='.$alert);
@@ -73,6 +74,6 @@ require_once("module.php");
 
 
 
-
+    header("location: index.php");
 
 ?>

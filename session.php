@@ -7,7 +7,7 @@ if(isset($_SESSION['userid'])&& isset($_SESSION['username']) && isset($_SESSION[
     unset($_SESSION['username']);
     unset($_SESSION['usertype']);
    
-     session_destroy();
+    // session_destroy();
     header("location:index.php");
 }
 
