@@ -66,6 +66,7 @@
                 <div class="right-panel">
                 <div class="content" id="dashboard">
             
+  
             </div>
                     <div class="content d-none" id="Categories">
                     <div class="row">
@@ -102,8 +103,19 @@
                                 <form>   
                                 <h5 class="category-item-title"><?php echo $row['CategoryName']; ?></h5>
                                     <p class="category-item-description"><?php echo $row['Description']; ?></p>
-                                    <input type="submit" class="category-item-button btn btn-outline-primary" value="ShowProduct" name="btnproduct">
-                            </form>
+                           
+                                    <div class="dropdown">
+
+<button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  Products
+</button>
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="font-family:cursive;">
+<a class="dropdown-item" href="#">add Product</a>
+<a class="dropdown-item" href="#">View Product</a>
+<a class="dropdown-item" href="#" style="color:#e3626eb0">Delete Product</a>
+</div>
+</div>
+
                                 </div>
                                 </div>
                             <?php } ?>
@@ -111,12 +123,13 @@
                     
                     </div>
                     <!-- Add similar content divs for other sections -->
+                    
                 </div>
             </div>
     
     </div>
 
-
+   
     </body>
 </html>
 <script>
@@ -136,5 +149,5 @@
 
     </script>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>  
-
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
