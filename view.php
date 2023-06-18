@@ -53,7 +53,7 @@
                 <div class="left-navbar">
                     <ul class="list-group">
                         <li class="list-group-item active" onclick="showDashboard()">Dashboard</li>
-                        <li class="list-group-item" onclick="showProducts()">Products</li>
+                      
                         <li class="list-group-item" onclick="showCategories()">Categories</li>
                         <li class="list-group-item" onclick="showOrders()">Orders</li>
                         <li class="list-group-item" onclick="showCustomers()">Customers</li>
@@ -64,19 +64,51 @@
             </div>
             <div class="col-md-9">
                 <div class="right-panel">
-                    <div class="content" id="dashboard">
-                    <?php 
-                   
-                   for($i=0; $i<5; $i++){
-
-                    echo "<li> ".$i."</li> <br/>";
-                   }
-                   ?>
+                <div class="content" id="dashboard">
+            
+            </div>
+                    <div class="content d-none" id="Categories">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="category-header">
+                            <h1 class="category-title">Category</h1>
+                            <p class="category-description">Explore our collection of items.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="search-container">
+                            <form class="row align-items-center">
+                                <div class="col-auto">
+                                <input type="text" class="search-input form-control" placeholder="Search">
+                                </div>
+                                <div class="col-auto">
+                                <input type="submit" class="btn btn-outline-primary" name="search" value="Search">
+                                </div>
+                            </form>
+                            </div>
+                        </div>
                     </div>
-                    <div class="content d-none" id="products">
-                        <?php
-                        // Your PHP code for the products section
-                        ?>
+
+        
+                        <div class="row">
+                            <?php
+                            $query = "SELECT * FROM categories";
+                            $run = $conn->query($query);
+
+                            while ($row = $run->fetch_assoc()) {
+                                ?>
+                                <div class="col-md-4">
+                                <div class="category-item" style="margin-bottom: 40px;">
+                                <form>   
+                                <h5 class="category-item-title"><?php echo $row['CategoryName']; ?></h5>
+                                    <p class="category-item-description"><?php echo $row['Description']; ?></p>
+                                    <input type="submit" class="category-item-button btn btn-outline-primary" value="ShowProduct" name="btnproduct">
+                            </form>
+                                </div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    
                     </div>
                     <!-- Add similar content divs for other sections -->
                 </div>
@@ -90,13 +122,13 @@
 <script>
         function showDashboard() {
             document.getElementById("dashboard").classList.remove("d-none");
-            document.getElementById("products").classList.add("d-none");
+            document.getElementById("Categories").classList.add("d-none");
             // Hide other sections if necessary
         }
 
-        function showProducts() {
+        function showCategories() {
             document.getElementById("dashboard").classList.add("d-none");
-            document.getElementById("products").classList.remove("d-none");
+            document.getElementById("Categories").classList.remove("d-none");
             // Hide other sections if necessary
         }
 
