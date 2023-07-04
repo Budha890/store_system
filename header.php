@@ -1,7 +1,7 @@
 
 <?php 
      require_once('module.php');
-
+     
 ?>
 
 <html lang="en">
@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css"  crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 
     <title>Store Management System</title>
   </head>

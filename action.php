@@ -1,5 +1,6 @@
 <?php 
 require_once("config.php");
+require_once("pdo.php");
 require_once("module.php");
 
 
@@ -99,7 +100,7 @@ require_once("module.php");
                         $row = $runqueryp->fetch_assoc();
                         logintostore($row['userid'],$row['username'],$row['usertype']);
                         $alert = "welcome ";
-                        header('location: view.php');
+                        header('location: pages/view.php');
                         $conn->close();
                         die();
                     }else{
@@ -109,6 +110,130 @@ require_once("module.php");
                     }
                 }
             }
+
+
+if (isset($_POST['new_quantity']) && ($_GET['form']=='addproduct') ) {
+    
+    
+    
+
+        try {
+            $newQuantity = $_POST['new_quantity'];
+            $productName = $_POST['productName'];
+            $description = $_POST['description'];
+            $amount = $_POST['price'];
+            $categoryid = $_POST['categoryid'];
+          
+            
+        
+                // Begin the database transaction
+                $connection->beginTransaction();
+            
+                // Insert the new product into the database
+                $insertSql = "INSERT INTO Products (ProductName, Description, TotalQuantity, amount, RemainingQuantity, categoryid)
+                              VALUES (:productName, :description, :totalQuantity, :amount,:totalQuantity ,:categoryid)";
+                $insertStmt = $connection->prepare($insertSql);
+                $insertStmt->bindParam(':productName', $productName);
+                $insertStmt->bindParam(':description', $description);
+                $insertStmt->bindParam(':totalQuantity', $newQuantity);
+                $insertStmt->bindParam(':amount', $amount);
+                $insertStmt->bindParam(':categoryid', $categoryid);
+                $insertStmt->execute();
+            
+                
+                $productID = $connection->lastInsertId(); // Get the auto-generated ProductID
+                
+            
+                // Commit the transaction
+                $connection->commit();
+            
+          
+
+            if ($productID) {
+                // Add a new transaction record
+                $insertTransactionQuery = "INSERT INTO Transactions (TransactionDate, ProductID, Quantity, TotalAmount) VALUES (NOW(),:productID, :Quantity,:TotalAmount)";
+                $stmt = $connection->prepare($insertTransactionQuery);
+                $stmt->bindParam(':productID', $productID);
+                $stmt->bindParam(':Quantity', $newQuantity);
+                $stmt->bindParam(':TotalAmount', $amount);
+                
+                $stmt->execute();
+            
+           
+                $alert = "inserted-successfully";
+            header("location:pages/addproduct.php?ptype=".$categoryid."&&alert=".$alert);
+            } else {
+                echo "Failed to add the product.";
+            }
+          
+            
+        } catch (PDOException $e) {
+            if ($e->getCode() == '23000') {
+                $connection->rollback();
+                $alert = "Product-already-exists.";
+                header("location:pages/addproduct.php?ptype=".$categoryid."&&alert=".$alert);
+                
+            } else {
+                echo "Error: " . $e->getMessage();
+            }
+        }
+    }
+
+    if (isset($_POST['new_quantity']) && ($_GET['form']=='updateproduct')) {
+      
+    
+            try {
+                $ProductID = $_POST['ProductID'];
+                $amount = $_POST['price'];
+                $categoryid = $_POST['categoryid'];
+                $newQuantity = $_POST['new_quantity'];
+
+                $ta =$amount*$newQuantity;
+
+             $updateQuery = "UPDATE Products SET TotalQuantity = TotalQuantity + $newQuantity, RemainingQuantity = RemainingQuantity + $newQuantity ,amount = amount + $amount WHERE ProductID = $ProductID";
+
+                $query = mysqli_query($conn,$updateQuery);
+             if ($query !=0) {
+
+                    $insertTransactionQuery = "INSERT INTO Transactions ( ProductID, Quantity, TotalAmount)
+                    VALUES (:productID, :Quantity,:TotalAmount)";
+                   $stmt1 = $connection->prepare($insertTransactionQuery);
+                   $stmt1->bindParam(':productID', $ProductID);
+                   $stmt1->bindParam(':Quantity', $newQuantity);
+                   $stmt1->bindParam(':TotalAmount', $amount);
+                   
+                   $stmt1->execute();
+               
+          
+                   $alert = "inserted-successfully";
+               header("location:pages/addproduct.php?ptype=".$categoryid."&&alert=".$alert);
+                    echo "Product quantity updated successfully.";
+                    
+                } else {
+                    echo "Failed to update the product quantity.";
+                }
+
+                
+            } catch (PDOException $e) {
+                if ($e->getCode() == '23000') {
+                    
+                    $alert = "Product-already-exists.";
+                    header("location:pages/addproduct.php?ptype=".$categoryid."&&alert=".$alert);
+                    
+                } else {
+                    echo "Error: " . $e->getMessage();
+                }
+            }
+        }
+    
+    
+
+
+                
+
+            
+
+
 
 
 ?>

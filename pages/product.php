@@ -1,4 +1,4 @@
-   <style>
+<style>
         body {
             margin: 0;
         }
@@ -44,8 +44,13 @@
             color: #007bff;
         }
     </style>
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <?php require '../header.php';
+  
 
-  <?php require_once 'header.php' ?>
+  ?>
+  
+ 
 
     <div class="container-fluid">
 
@@ -53,8 +58,7 @@
                 <div class="left-navbar">
                     <ul class="list-group">
                         <li class="list-group-item active" onclick="showDashboard()">Dashboard</li>
-                      
-                        <li class="list-group-item" onclick="showCategories()">Categories</li>
+                    
                         <li class="list-group-item" onclick="showOrders()">Orders</li>
                         <li class="list-group-item" onclick="showCustomers()">Customers</li>
                         <li class="list-group-item" onclick="showReports()">Reports</li>
@@ -68,7 +72,7 @@
             
   
             </div>
-                    <div class="content d-none" id="Categories">
+                    <div class="content" id="Categories">
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="category-header">
@@ -110,7 +114,7 @@
   Products
 </button>
 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="font-family:cursive;">
-<a class="dropdown-item" href="#">add Product</a>
+<a class="dropdown-item" href="addproduct.php?ptype=<?php echo $row['CategoryName']; ?>">add Product</a>
 <a class="dropdown-item" href="#">View Product</a>
 <a class="dropdown-item" href="#" style="color:#e3626eb0">Delete Product</a>
 </div>
@@ -139,11 +143,7 @@
             // Hide other sections if necessary
         }
 
-        function showCategories() {
-            document.getElementById("dashboard").classList.add("d-none");
-            document.getElementById("Categories").classList.remove("d-none");
-            // Hide other sections if necessary
-        }
+     
 
         // Add similar functions for other sections
 

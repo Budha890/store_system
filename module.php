@@ -26,6 +26,21 @@ function traceuser(){
     return FALSE;
 }
 
+ function getproductid($conn,$id){
 
+    $query = "select *from products where categoryid = $id";
+    $rq = mysqli_query($conn, $query);
+
+
+    $productIDs = array();
+    while ($row = $rq->fetch_assoc()) {
+        if (isset($row['ProductID'])) {
+            $productIDs[] = $row['ProductID'];
+        }
+    }
+
+    return $productIDs;   
+
+ }
 
 ?>
