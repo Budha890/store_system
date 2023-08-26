@@ -13,12 +13,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
-    <title>Store Management System</title>
+    <title>Road App</title>
   </head>
   <body>
   
     <span>
-    <a class="navbar-brand" href="#"><h5>Store Management System</h5></a>
+    <a class="navbar-brand" href="#"><h5>Vehicle Verification</h5></a>
     </span>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -39,10 +39,8 @@
           Action
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">Compliant</a>
         </div>
       </li>
       
