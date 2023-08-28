@@ -41,6 +41,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="addFine.php">AddFine</a>
           <a class="dropdown-item" href="updateFine.php">UpdateFine</a>
+          <a class="dropdown-item" href="addVehicle.php">AddVehicle</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">RemoveFine</a>
         </div>
